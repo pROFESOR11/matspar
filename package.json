@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "svgr": "svgr -d src/components/Icon/subComponents src/components/Icon/svgs --replace-attr-values '#1B153D=currentColor' --icon --memo --typescript"
   },
   "dependencies": {
     "@next/font": "13.1.6",
@@ -15,6 +16,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@svgr/cli": "^6.5.1",
     "@types/node": "^18.13.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
