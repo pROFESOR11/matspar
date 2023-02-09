@@ -1,0 +1,53 @@
+.container {
+  background-color: white;
+  box-shadow: 0px 20px 35px 0px #1714390a;
+  border-radius: 0.875rem;
+  padding: 0.5rem;
+  letter-spacing: -0.24px;
+  max-width: 100%;
+}
+
+.image_wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 6rem;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition-property: transform;
+  transition-timing-function: linear;
+  transition-duration: 200ms;
+}
+
+.container:hover .image {
+  transform: scale(1.05);
+  box-shadow: 0px 20px 40px 0px #0101010a;
+}
+
+.container > h3 {
+  margin: 1rem 0 0.5rem 0;
+  color: var(--secondary);
+  font-weight: 600;
+  line-height: 1.18rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.container > h4 {
+  margin-bottom: 1.5rem;
+  font-size: 0.75rem;
+  line-height: 0.875rem;
+  color: #9095a6;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.container > span {
+  color: var(--primary);
+  line-height: 1.125rem;
+}
