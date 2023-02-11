@@ -13,17 +13,23 @@ type ProductCardProps = {
 const poppins = Poppins({ subsets: ['latin'], weight: '500' })
 
 export const ProductCard = ({ product }: ProductCardProps) => {
+  const imageUrl = getProductImageUrl(product.image)
+
   return (
     <a href="#">
       <article className={cx(styles.container, 'shadow')}>
         <div className={styles.image_wrapper}>
-          <Image
-            className={styles.image}
-            src={getProductImageUrl(product.image) ?? ''}
-            alt="product"
-            width="0"
-            height="0"
-          />
+          {imageUrl ? (
+            <Image
+              className={styles.image}
+              src={imageUrl}
+              alt={`${product.name}/${product.brand}`}
+              width="0"
+              height="0"
+            />
+          ) : (
+            <div className={styles.image_placeholder} />
+          )}
         </div>
         <h3 className={cx('headline3 text_ellipsis', styles.product_name)}>
           {product.name}
