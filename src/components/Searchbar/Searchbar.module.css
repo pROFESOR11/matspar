@@ -4,6 +4,7 @@
   align-items: center;
   gap: 2rem;
   color: var(--secondary);
+  overflow: hidden;
 }
 
 .icon {
@@ -27,9 +28,18 @@
   transition: width 500ms ease-in-out;
 }
 
+.menu_icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.container:focus-within {
+  gap: 0;
+}
+
 .container:focus-within .menu_icon {
-  font-size: 0px;
-  visibility: hidden;
+  width: 0;
+  height: 0;
 }
 
 .container:focus-within .input_container {
