@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -13,9 +13,11 @@
     "@next/font": "13.1.6",
     "classnames": "^2.3.2",
     "next": "13.1.6",
+    "next-query-params": "^4.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-query": "^3.39.3"
+    "react-query": "^3.39.3",
+    "use-query-params": "^2.2.0"
   },
   "devDependencies": {
     "@svgr/cli": "^6.5.1",
