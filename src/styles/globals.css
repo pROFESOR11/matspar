@@ -1,6 +1,9 @@
+@import './typography.css';
+
 :root {
   --primary: #17a030;
   --secondary: #1b153d;
+  --accent2: #9095a6;
 }
 
 * {
@@ -11,7 +14,6 @@
 
 html,
 body {
-  max-width: 100vw;
   overflow-x: hidden;
   background: #fcfcff;
 }
