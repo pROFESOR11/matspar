@@ -60,3 +60,9 @@
   line-height: 19px;
   letter-spacing: -0.24px;
 }
+
+.text_ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
