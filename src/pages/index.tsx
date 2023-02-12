@@ -1,5 +1,6 @@
 import cx from 'classnames'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
+import { NextSeo } from 'next-seo'
 import { useRef, useState } from 'react'
 import { dehydrate, QueryClient, useQuery } from 'react-query'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
@@ -75,71 +76,79 @@ export default function Home({
   }
 
   return (
-    <main className={styles.container}>
-      <Searchbar
-        placeholder="Search Product"
-        value={searchInputValue}
-        inputMode="search"
-        onChange={(event) => setSearchInputValue(event.target.value)}
-        onFocus={() => setMode(MODES.SEARCH_MODE)}
-        onBlur={() =>
-          setTimeout(() => {
-            setMode(MODES.VIEW_MODE)
-          }, 100)
+    <>
+      <NextSeo
+        title={
+          searchQuery !== '' ? `Search results for ${searchQuery}` : undefined
         }
-        onPressEnter={setSearchQuery}
       />
-      <SwitchTransition>
-        <CSSTransition
-          key={mode}
-          nodeRef={nodeRef}
-          addEndListener={(done) => {
-            nodeRef.current?.addEventListener('transitionend', done, false)
-          }}
-          classNames="fade"
-        >
-          <div ref={nodeRef}>
-            {mode === MODES.VIEW_MODE ? (
-              <div>
-                <h1 className={cx('headline', styles.headline)}>
-                  Find your favorite products now.
-                </h1>
-                <Tab
-                  tabs={[
-                    {
-                      id: '0',
-                      label: 'Trendy foods'
-                    },
-                    {
-                      id: '1',
-                      label: 'Bread'
-                    },
-                    {
-                      id: '2',
-                      label: 'Milk'
-                    },
-                    {
-                      id: '3',
-                      label: 'Egg'
-                    }
-                  ]}
-                />
-                <div className={styles.product_card_grid}>
-                  <ProductCardGrid
-                    productResponse={data}
-                    isLoading={isLoading}
+
+      <main className={styles.container}>
+        <Searchbar
+          placeholder="Search Product"
+          value={searchInputValue}
+          inputMode="search"
+          onChange={(event) => setSearchInputValue(event.target.value)}
+          onFocus={() => setMode(MODES.SEARCH_MODE)}
+          onBlur={() =>
+            setTimeout(() => {
+              setMode(MODES.VIEW_MODE)
+            }, 100)
+          }
+          onPressEnter={setSearchQuery}
+        />
+        <SwitchTransition>
+          <CSSTransition
+            key={mode}
+            nodeRef={nodeRef}
+            addEndListener={(done) => {
+              nodeRef.current?.addEventListener('transitionend', done, false)
+            }}
+            classNames="fade"
+          >
+            <div ref={nodeRef}>
+              {mode === MODES.VIEW_MODE ? (
+                <div>
+                  <h1 className={cx('headline', styles.headline)}>
+                    Find your favorite products now.
+                  </h1>
+                  <Tab
+                    tabs={[
+                      {
+                        id: '0',
+                        label: 'Trendy foods'
+                      },
+                      {
+                        id: '1',
+                        label: 'Bread'
+                      },
+                      {
+                        id: '2',
+                        label: 'Milk'
+                      },
+                      {
+                        id: '3',
+                        label: 'Egg'
+                      }
+                    ]}
                   />
+                  <div className={styles.product_card_grid}>
+                    <ProductCardGrid
+                      productResponse={data}
+                      isLoading={isLoading}
+                    />
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <SearchCTA
-                listItems={autocompleteResponse ?? []}
-                onAction={handleSearchAction}
-              />
-            )}
-          </div>
-        </CSSTransition>
-      </SwitchTransition>
-    </main>
+              ) : (
+                <SearchCTA
+                  listItems={autocompleteResponse ?? []}
+                  onAction={handleSearchAction}
+                />
+              )}
+            </div>
+          </CSSTransition>
+        </SwitchTransition>
+      </main>
+    </>
   )
 }
