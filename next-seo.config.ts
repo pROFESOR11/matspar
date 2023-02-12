@@ -9,7 +9,7 @@ const config: DefaultSeoProps = {
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: process.env.NEXT_PUBLIC_WEB_URL,
+    url: process.env.NEXT_PUBLIC_VERCEL_URL,
     siteName: 'matspar'
   }
 }
