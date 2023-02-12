@@ -12,6 +12,7 @@ import cx from 'classnames'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from '@/hooks/useDebounce'
 import { SwitchTransition, CSSTransition } from 'react-transition-group'
+import { ProductCardGrid } from '@/components/ProductCardGrid'
 
 enum MODES {
   VIEW_MODE = 'VIEW_MODE',
@@ -52,7 +53,7 @@ export default function Home({
 
   const nodeRef = useRef<HTMLDivElement>(null)
 
-  const { data } = useQuery(
+  const { data, isLoading } = useQuery(
     ['products', searchQuery],
     () => getProducts(searchQuery),
     {
@@ -103,11 +104,7 @@ export default function Home({
                 <h1 className={cx('headline', styles.headline)}>
                   Find your favorite products now.
                 </h1>
-                <Grid minWidth={10} gutter="1.5rem">
-                  {data?.payload.products.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
-                </Grid>
+                <ProductCardGrid productResponse={data} isLoading={isLoading} />
               </div>
             ) : (
               <SearchCTA
