@@ -13,7 +13,7 @@ export default async function handler(
       url: `${process.env.API_URL}/autocomplete?query=${q}`,
       method: 'GET'
     })
-    res.status(200).json(response.data)
+    res.status(200).json(response.data.suggestions)
   } catch (error) {
     if (axios.isAxiosError(error)) {
       res
