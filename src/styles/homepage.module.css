@@ -1,0 +1,15 @@
+.container {
+  padding: 1.25rem;
+  position: relative;
+}
+
+.headline {
+  margin: 1.25rem 0 2rem 0;
+}
+
+.no_visible {
+  width: 0;
+  height: 0;
+  z-index: -1;
+  overflow: hidden;
+}
