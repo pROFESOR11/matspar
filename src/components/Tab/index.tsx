@@ -1,5 +1,6 @@
-import { useState } from 'react'
 import cx from 'classnames'
+import { useState } from 'react'
+
 import styles from './tab.module.css'
 
 type TabItem = {

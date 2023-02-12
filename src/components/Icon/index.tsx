@@ -1,4 +1,5 @@
 import { SVGProps } from 'react'
+
 import * as Icons from './subComponents'
 
 export type IconName = keyof typeof Icons

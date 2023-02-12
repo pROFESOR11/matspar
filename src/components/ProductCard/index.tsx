@@ -1,10 +1,12 @@
+import { Poppins } from '@next/font/google'
+import cx from 'classnames'
+import Image from 'next/image'
+
 import type { Product } from '@/types/Product'
 import { formatUsd } from '@/utils/formatUsd'
 import { getProductImageUrl } from '@/utils/getProductImage'
-import Image from 'next/image'
+
 import styles from './productCard.module.css'
-import cx from 'classnames'
-import { Poppins } from '@next/font/google'
 
 type ProductCardProps = {
   product: Product

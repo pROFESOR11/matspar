@@ -1,4 +1,5 @@
 import { AutocompleteResponse } from '@/types/Autocomplete'
+
 import { apiInstance } from './config'
 
 export async function getAutocompleteSuggestions(

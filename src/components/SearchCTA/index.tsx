@@ -1,7 +1,9 @@
-import { Icon } from '@/components/Icon'
-import styles from './searchCTA.module.css'
 import cx from 'classnames'
+
+import { Icon } from '@/components/Icon'
 import type { AutocompleteResponse } from '@/types/Autocomplete'
+
+import styles from './searchCTA.module.css'
 
 type SearchCTAProps = {
   listItems: AutocompleteResponse

@@ -1,17 +1,18 @@
-import { SearchCTA } from '@/components/SearchCTA'
-import { Searchbar } from '@/components/Searchbar'
-import { getAutocompleteSuggestions } from '@/db/getAutocompleteSuggestions'
-import { getProducts } from '@/db/getProducts'
-import styles from '@/styles/homepage.module.css'
+import cx from 'classnames'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import { useRef, useState } from 'react'
 import { dehydrate, QueryClient, useQuery } from 'react-query'
-import cx from 'classnames'
+import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
-import { useDebounce } from '@/hooks/useDebounce'
-import { SwitchTransition, CSSTransition } from 'react-transition-group'
+
 import { ProductCardGrid } from '@/components/ProductCardGrid'
+import { Searchbar } from '@/components/Searchbar'
+import { SearchCTA } from '@/components/SearchCTA'
 import { Tab } from '@/components/Tab'
+import { getAutocompleteSuggestions } from '@/db/getAutocompleteSuggestions'
+import { getProducts } from '@/db/getProducts'
+import { useDebounce } from '@/hooks/useDebounce'
+import styles from '@/styles/homepage.module.css'
 
 enum MODES {
   VIEW_MODE = 'VIEW_MODE',

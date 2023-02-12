@@ -1,6 +1,7 @@
-import { Product } from '@/types/Product'
-import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
+import type { NextApiRequest, NextApiResponse } from 'next'
+
+import { Product } from '@/types/Product'
 
 export default async function handler(
   req: NextApiRequest,

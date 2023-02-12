@@ -1,7 +1,7 @@
 import { Grid, GridProps } from '@/components/Grid'
-import { ProductSearchResponse } from '@/types/Product'
 import { ProductCard } from '@/components/ProductCard'
 import { Spinner } from '@/components/Spinner'
+import { ProductSearchResponse } from '@/types/Product'
 
 type ProductCardGridProps = {
   productResponse?: ProductSearchResponse

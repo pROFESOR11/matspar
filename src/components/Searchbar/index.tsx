@@ -1,7 +1,9 @@
-import { Icon } from '@/components/Icon'
-import styles from './Searchbar.module.css'
 import cx from 'classnames'
 import { KeyboardEvent, useRef } from 'react'
+
+import { Icon } from '@/components/Icon'
+
+import styles from './Searchbar.module.css'
 
 type SearchbarProps = JSX.IntrinsicElements['input'] & {
   onPressEnter?: (text: string) => void

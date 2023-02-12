@@ -1,10 +1,11 @@
 import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+
 import { Raleway } from '@next/font/google'
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
+import type { AppProps } from 'next/app'
 import { NextAdapter } from 'next-query-params'
-import { QueryParamProvider } from 'use-query-params'
 import { useState } from 'react'
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
+import { QueryParamProvider } from 'use-query-params'
 
 const raleway = Raleway({
   weight: ['400', '500', '600', '700'],
