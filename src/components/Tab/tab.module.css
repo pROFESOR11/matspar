@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  list-style-type: none;
+}
+
+.tab_item {
+  color: var(--accent2);
+  opacity: 0.65;
+  cursor: pointer;
+}
+
+.active {
+  color: var(--primary);
+  opacity: 1;
+  cursor: default;
+}
+
+.tab_item::after {
+  content: '';
+  margin-top: 0.5rem;
+  opacity: 0;
+  width: 50%;
+  border-top: 1.5px solid var(--primary);
+  display: block;
+}
+
+.tab_item.active::after {
+  opacity: 1;
+}
+
+.tab_item:not(.active):hover {
+  color: var(--primary);
+}
