@@ -1,5 +1,3 @@
-import { Grid } from '@/components/Grid'
-import { ProductCard } from '@/components/ProductCard'
 import { SearchCTA } from '@/components/SearchCTA'
 import { Searchbar } from '@/components/Searchbar'
 import { getAutocompleteSuggestions } from '@/db/getAutocompleteSuggestions'
@@ -13,6 +11,7 @@ import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from '@/hooks/useDebounce'
 import { SwitchTransition, CSSTransition } from 'react-transition-group'
 import { ProductCardGrid } from '@/components/ProductCardGrid'
+import { Tab } from '@/components/Tab'
 
 enum MODES {
   VIEW_MODE = 'VIEW_MODE',
@@ -104,7 +103,32 @@ export default function Home({
                 <h1 className={cx('headline', styles.headline)}>
                   Find your favorite products now.
                 </h1>
-                <ProductCardGrid productResponse={data} isLoading={isLoading} />
+                <Tab
+                  tabs={[
+                    {
+                      id: '0',
+                      label: 'Trendy foods'
+                    },
+                    {
+                      id: '1',
+                      label: 'Bread'
+                    },
+                    {
+                      id: '2',
+                      label: 'Milk'
+                    },
+                    {
+                      id: '3',
+                      label: 'Egg'
+                    }
+                  ]}
+                />
+                <div className={styles.product_card_grid}>
+                  <ProductCardGrid
+                    productResponse={data}
+                    isLoading={isLoading}
+                  />
+                </div>
               </div>
             ) : (
               <SearchCTA
