@@ -12,7 +12,7 @@ export const Searchbar = ({ onPressEnter, ...props }: SearchbarProps) => {
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      onPressEnter?.(encodeURIComponent(inputRef.current?.value ?? ''))
+      onPressEnter?.(inputRef.current?.value ?? '')
       inputRef.current?.blur()
     }
   }
