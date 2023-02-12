@@ -6,11 +6,12 @@ import { getAutocompleteSuggestions } from '@/db/getAutocompleteSuggestions'
 import { getProducts } from '@/db/getProducts'
 import styles from '@/styles/homepage.module.css'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { dehydrate, QueryClient, useQuery } from 'react-query'
 import cx from 'classnames'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from '@/hooks/useDebounce'
+import { SwitchTransition, CSSTransition } from 'react-transition-group'
 
 enum MODES {
   VIEW_MODE = 'VIEW_MODE',
@@ -45,11 +46,11 @@ export default function Home({
     'q',
     withDefault(StringParam, initialSearchQuery)
   )
+  const [mode, setMode] = useState(MODES.VIEW_MODE)
   const [searchInputValue, setSearchInputValue] = useState(searchQuery)
-
   const debouncedSearchInputValue = useDebounce(searchInputValue, 500)
 
-  const [mode, setMode] = useState(MODES.VIEW_MODE)
+  const nodeRef = useRef<HTMLDivElement>(null)
 
   const { data } = useQuery(
     ['products', searchQuery],
@@ -87,31 +88,36 @@ export default function Home({
         }
         onPressEnter={setSearchQuery}
       />
-      <div
-        className={cx({
-          [styles.no_visible]: mode === MODES.SEARCH_MODE
-        })}
-      >
-        <h1 className={cx('headline', styles.headline)}>
-          Find your favorite products now.
-        </h1>
-        <Grid minWidth={10} gutter="1.5rem">
-          {data?.payload.products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </Grid>
-      </div>
-
-      <div
-        className={cx({
-          [styles.no_visible]: mode === MODES.VIEW_MODE
-        })}
-      >
-        <SearchCTA
-          listItems={autocompleteResponse ?? []}
-          onAction={handleSearchAction}
-        />
-      </div>
+      <SwitchTransition>
+        <CSSTransition
+          key={mode}
+          nodeRef={nodeRef}
+          addEndListener={(done) => {
+            nodeRef.current?.addEventListener('transitionend', done, false)
+          }}
+          classNames="fade"
+        >
+          <div ref={nodeRef}>
+            {mode === MODES.VIEW_MODE ? (
+              <div>
+                <h1 className={cx('headline', styles.headline)}>
+                  Find your favorite products now.
+                </h1>
+                <Grid minWidth={10} gutter="1.5rem">
+                  {data?.payload.products.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </Grid>
+              </div>
+            ) : (
+              <SearchCTA
+                listItems={autocompleteResponse ?? []}
+                onAction={handleSearchAction}
+              />
+            )}
+          </div>
+        </CSSTransition>
+      </SwitchTransition>
     </main>
   )
 }
