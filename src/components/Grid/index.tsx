@@ -1,5 +1,6 @@
-import styles from './grid.module.css'
 import cx from 'classnames'
+
+import styles from './grid.module.css'
 
 export type GridProps = JSX.IntrinsicElements['div'] & {
   children: React.ReactNode
