@@ -1,5 +1,7 @@
 import { DefaultSeoProps } from 'next-seo'
 
+import { webAppUrl } from '@/db/config'
+
 const config: DefaultSeoProps = {
   defaultTitle: 'Matspar | Compare food prices easily',
   titleTemplate: 'Matspar | %s',
@@ -9,7 +11,7 @@ const config: DefaultSeoProps = {
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: process.env.NEXT_PUBLIC_VERCEL_URL,
+    url: webAppUrl,
     siteName: 'matspar'
   }
 }
