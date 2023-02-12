@@ -1,1 +1,1 @@
-export const baseUrl = 'https://api.matspar.se'
+export const baseUrl = `${process.env.NEXT_PUBLIC_WEB_URL}/api`
